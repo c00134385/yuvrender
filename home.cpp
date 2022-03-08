@@ -37,9 +37,9 @@ Home::Home(QWidget *parent) : QWidget(parent)
         QFile file(filename);
         file.open(QIODevice::ReadOnly);
         QByteArray data = file.readAll();
-//        render->setYUV420pParameters(1280, 720);
-//        render->setFrameData(data);
+        render->setYUV420pParameters(1280, 720);
+        render->setFrameData(data);
 
-        cameraRender->render(data, 1280, 720);
+//        cameraRender->render(data, 1280, 720);
     });
 }
