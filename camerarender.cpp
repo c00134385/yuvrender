@@ -88,7 +88,8 @@ void CameraRender::initTexture()
 void CameraRender::initGeometry()
 {
     mVertices << QVector3D(-1, 1, 0.0f) << QVector3D(1, 1, 0.0f) << QVector3D(1, -1, 0.0f) << QVector3D(-1, -1, 0.0f);
-    mTexcoords << QVector2D(0, 1) << QVector2D(1, 1) << QVector2D(1, 0) << QVector2D(0, 0);
+//    mTexcoords << QVector2D(0, 1) << QVector2D(1, 1) << QVector2D(1, 0) << QVector2D(0, 0);
+    mTexcoords << QVector2D(0, 0) << QVector2D(1, 0) << QVector2D(1, 1) << QVector2D(0, 1);
 
     mViewMatrix.setToIdentity();
     mViewMatrix.lookAt(QVector3D(0.0f, 0.0f, 1.001f), QVector3D(0.0f, 0.0f, -5.0f), QVector3D(0.0f, 1.0f, 0.0f));

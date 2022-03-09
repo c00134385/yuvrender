@@ -39,8 +39,8 @@ Home::Home(QWidget *parent) : QWidget(parent)
         QFile file(filename);
         file.open(QIODevice::ReadOnly);
         QByteArray data = file.readAll();
-//        render->setYUV420pParameters(1280, 720);
-//        render->setFrameData(data);
+        render->setYUV420pParameters(1280, 720);
+        render->setFrameData(data);
 
 //        cameraRender->render(data, 1280, 720);
 
@@ -49,12 +49,15 @@ Home::Home(QWidget *parent) : QWidget(parent)
         YUVData m_yuvData;
         m_yuvData.Y.resize(width * height);
         memcpy(m_yuvData.Y.data(), data.data(), static_cast<size_t>(m_yuvData.Y.size()));
+
         m_yuvData.U.resize(width / 2 * height / 2);
-//        memcpy(m_yuvData.U.data(), data.data(), static_cast<size_t>(m_yuvData.U.size()));
-        memset(m_yuvData.U.data(), 0, static_cast<size_t>(m_yuvData.U.size()));
+//        memset(m_yuvData.U.data(), 0, static_cast<size_t>(m_yuvData.U.size()));
+        memcpy(m_yuvData.U.data(), data.data() + m_yuvData.Y.size(), static_cast<size_t>(m_yuvData.U.size()));
+
         m_yuvData.V.resize(width / 2 * height / 2);
-//        memcpy(m_yuvData.V.data(), data.data(), static_cast<size_t>(m_yuvData.V.size()));
-        memset(m_yuvData.V.data(), 0, static_cast<size_t>(m_yuvData.V.size()));
+//        memset(m_yuvData.V.data(), 0, static_cast<size_t>(m_yuvData.V.size()));
+        memcpy(m_yuvData.V.data(), data.data() + m_yuvData.Y.size() + m_yuvData.U.size(), static_cast<size_t>(m_yuvData.V.size()));
+
         m_yuvData.yLineSize = width;
         m_yuvData.uLineSize = width/2;
         m_yuvData.vLineSize = width/2;
