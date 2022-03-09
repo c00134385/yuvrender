@@ -63,7 +63,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
         m_yuvData.vLineSize = width/2;
         m_yuvData.height = height;
 
-        cameraRender->updateTextureInfo(width, height, 0);
+        cameraRender->updateTextureInfo(width, height, 2);
         cameraRender->updateTextureData(m_yuvData);
         cameraRender->render();
     });

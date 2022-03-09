@@ -24,6 +24,17 @@ void main(void)
         rgb.x = texture2D(tex_y, v_texCoord).r;
         rgb.y = texture2D(tex_y, v_texCoord).r;
         rgb.z = texture2D(tex_y, v_texCoord).r;
+    } else if(pixFmt == 2) {
+        float grey = texture2D(tex_y, v_texCoord).r;
+        if(grey > 0.8) {
+            rgb.x = 1.0;
+            rgb.y = 0.0;
+            rgb.z = 0.0;
+        } else {
+            rgb.x = grey;
+            rgb.y = grey;
+            rgb.z = grey;
+        }
     } else {
         //YUV444P
         yuv.x = texture2D(tex_y, v_texCoord).r;

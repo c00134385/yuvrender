@@ -97,6 +97,7 @@ void CameraRender::initGeometry()
 }
 void CameraRender::updateTextureInfo(int width, int height, int format)
 {
+    mPixFmt = format;
     // yuv420p
     mTexY->setSize(width, height);
     mTexY->allocateStorage(QOpenGLTexture::Red, QOpenGLTexture::UInt8);
